@@ -1,14 +1,26 @@
 <template>
     <div class="content">
-        <div class="title m-b-md">
-        Lavori in corso...
-        </div> 
+        <AppHeader :title="title"/>
+        <main class="container mt-3">
+            <PostList/>
+        </main>
     </div>
 </template>
 
 <script>
+import AppHeader from "./AppHeader"
+import PostList from "./PostList";
 export default{
     name: "App",
+    components: {
+    AppHeader,
+    PostList,
+},
+    data(){
+        return{
+            title: "Boolpress",
+        };
+    },
 };
 </script>
 
