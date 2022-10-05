@@ -2,12 +2,13 @@
     <div class="content">
         <AppHeader :title="title"/>
         <main class="container mt-3">
-            <PostList/>
+            <router-view></router-view>
         </main>
     </div>
 </template>
 
 <script>
+import HomePage from "./pages/Homepage.vue"
 import AppHeader from "./AppHeader"
 import PostList from "./posts/PostList.vue";
 
@@ -15,6 +16,7 @@ export default{
     name: "App",
     components: {
     AppHeader,
+    HomePage,
     PostList
 },
     data(){
