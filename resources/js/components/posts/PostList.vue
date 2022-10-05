@@ -1,15 +1,20 @@
 <template>
     <section id="post-list">
         <h3>Lista dei posts</h3>
-        <div v-if="posts.length">
-            <PostCard v-for="post in posts" :key="post.id" :post="post" />
+        <AppLoader v-if="isLoading" />
+        <div class="text-danger" v-else-if="error">{{error}}</div>
+        <div v-else>
+            <div v-if="posts.length">
+                <PostCard v-for="post in posts" :key="post.id" :post="post" />
+            </div>
+            <h5 v-else>Nessun post</h5>
         </div>
-        <h5 v-else>Nessun post</h5>
     </section>
 </template>
 
 <script>
 import PostCard from './PostCard.vue';
+import AppLoader from '../AppLoader.vue';
     export default{
     name: "PostList",
     components: {
@@ -18,23 +23,26 @@ import PostCard from './PostCard.vue';
     data() {
         return {
             posts: [],
+            isLoading: false,
+            error: null,
         };
     },
     methods: {
         fetchPosts() {
+            this.isLoading = true;
             axios.get("http://localhost:8000/api/posts").then(res => {
                 this.posts = res.data;
             }).catch((err) => {
-                console.error(err);
+                this.error = 'Errore durante il fetch dei post';
             }).then(() => {
-                console.log("Chiamata terminata");
+                this.isLoading = false;
             });
         }
     },
     mounted() {
         this.fetchPosts();
     },
-    components: { PostCard }
+    components: { PostCard, AppLoader }
 }
 </script>
 

@@ -9,12 +9,13 @@
 
 <script>
 import AppHeader from "./AppHeader"
-import PostList from "./PostList";
+import PostList from "./posts/PostList.vue";
+
 export default{
     name: "App",
     components: {
     AppHeader,
-    PostList,
+    PostList
 },
     data(){
         return{
