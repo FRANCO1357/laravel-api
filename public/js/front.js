@@ -1941,6 +1941,20 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'AppHeader',
+  data: function data() {
+    return {
+      links: [{
+        name: 'home',
+        label: 'Home'
+      }, {
+        name: 'about',
+        label: 'About'
+      }, {
+        name: 'contacts',
+        label: 'Contacts'
+      }]
+    };
+  },
   props: {
     title: String
   }
@@ -2189,34 +2203,18 @@ var render = function render() {
     }
   }, [_c("ul", {
     staticClass: "navbar-nav"
-  }, [_c("li", {
-    staticClass: "nav-item"
-  }, [_c("router-link", {
-    staticClass: "nav-link",
-    attrs: {
-      to: {
-        name: "home"
+  }, _vm._l(_vm.links, function (link) {
+    return _c("li", {
+      staticClass: "nav-item"
+    }, [_c("router-link", {
+      staticClass: "nav-link",
+      attrs: {
+        to: {
+          name: link.name
+        }
       }
-    }
-  }, [_vm._v("Home")])], 1), _vm._v(" "), _c("li", {
-    staticClass: "nav-item"
-  }, [_c("router-link", {
-    staticClass: "nav-link",
-    attrs: {
-      to: {
-        name: "about"
-      }
-    }
-  }, [_vm._v("About")])], 1), _vm._v(" "), _c("li", {
-    staticClass: "nav-item"
-  }, [_c("router-link", {
-    staticClass: "nav-link",
-    attrs: {
-      to: {
-        name: "contacts"
-      }
-    }
-  }, [_vm._v("Contacts")])], 1)])])])]);
+    }, [_vm._v(_vm._s(link.label))])], 1);
+  }), 0)])])]);
 };
 
 var staticRenderFns = [function () {

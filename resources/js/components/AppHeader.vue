@@ -7,14 +7,8 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
-            <li class="nav-item">
-                <router-link class="nav-link" :to="{name:'home'}">Home</router-link>
-            </li>
-            <li class="nav-item">
-                <router-link class="nav-link" :to="{name:'about'}">About</router-link>
-            </li>
-            <li class="nav-item">
-                <router-link class="nav-link" :to="{name:'contacts'}">Contacts</router-link>
+            <li v-for="link in links" class="nav-item">
+                <router-link class="nav-link" :to="{name: link.name}">{{link.label}}</router-link>
             </li>
         </ul>
     </div>
@@ -25,6 +19,13 @@
 <script>
 export default{
     name: 'AppHeader',
+    data: () => ({
+        links: [
+            {name: 'home', label: 'Home'},
+            {name: 'about', label: 'About'},
+            {name: 'contacts', label: 'Contacts'},
+        ]
+    }),
     props:{
         title: String,
     }
