@@ -2190,7 +2190,7 @@ var render = function render() {
   }, [_c("ul", {
     staticClass: "navbar-nav"
   }, [_c("li", {
-    staticClass: "nav-item active"
+    staticClass: "nav-item"
   }, [_c("router-link", {
     staticClass: "nav-link",
     attrs: {
@@ -54695,6 +54695,7 @@ __webpack_require__.r(__webpack_exports__);
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
 var routes = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
+  linkExactActiveClass: 'active',
   mode: 'history',
   routes: [{
     path: '/',
