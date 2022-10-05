@@ -6,8 +6,9 @@
         <h6 class="card-subtitle mb-2 text-muted">Data di pubblicazione: {{publishedAt}}</h6>
         <p class="card-text">{{post.content}}</p>
     </div>
-    <div class="card-footer">
+    <div class="card-footer d-flex justify-content-between align-items-center">
         <span class="badge badge-pill" :class="`badge-${post.category ? post.category.color : 'light'}`">{{post.category.label}}</span>
+        <router-link :to="{name: 'post-detail', params:{id: post.id}}" class="btn btn-primary btn-sm">Vedi</router-link>
     </div>
 </div>
 </div>
