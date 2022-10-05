@@ -2182,7 +2182,41 @@ var render = function render() {
     attrs: {
       href: "#"
     }
-  }, [_vm._v(_vm._s(_vm.title))]), _vm._v(" "), _vm._m(0), _vm._v(" "), _vm._m(1)])]);
+  }, [_vm._v(_vm._s(_vm.title))]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c("div", {
+    staticClass: "collapse navbar-collapse",
+    attrs: {
+      id: "navbarNav"
+    }
+  }, [_c("ul", {
+    staticClass: "navbar-nav"
+  }, [_c("li", {
+    staticClass: "nav-item active"
+  }, [_c("router-link", {
+    staticClass: "nav-link",
+    attrs: {
+      to: {
+        name: "home"
+      }
+    }
+  }, [_vm._v("Home")])], 1), _vm._v(" "), _c("li", {
+    staticClass: "nav-item"
+  }, [_c("router-link", {
+    staticClass: "nav-link",
+    attrs: {
+      to: {
+        name: "about"
+      }
+    }
+  }, [_vm._v("About")])], 1), _vm._v(" "), _c("li", {
+    staticClass: "nav-item"
+  }, [_c("router-link", {
+    staticClass: "nav-link",
+    attrs: {
+      to: {
+        name: "contacts"
+      }
+    }
+  }, [_vm._v("Contacts")])], 1)])])])]);
 };
 
 var staticRenderFns = [function () {
@@ -2202,25 +2236,6 @@ var staticRenderFns = [function () {
   }, [_c("span", {
     staticClass: "navbar-toggler-icon"
   })]);
-}, function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
-  return _c("div", {
-    staticClass: "collapse navbar-collapse",
-    attrs: {
-      id: "navbarNav"
-    }
-  }, [_c("ul", {
-    staticClass: "navbar-nav"
-  }, [_c("li", {
-    staticClass: "nav-item active"
-  }, [_c("a", {
-    staticClass: "nav-link",
-    attrs: {
-      href: "#"
-    }
-  }, [_vm._v("Home")])])])]);
 }];
 render._withStripped = true;
 
@@ -54683,15 +54698,18 @@ var routes = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   mode: 'history',
   routes: [{
     path: '/',
-    component: _components_pages_HomePage_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+    component: _components_pages_HomePage_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+    name: 'home'
   }, {
     path: '/about',
-    component: _components_pages_AboutPage_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
+    component: _components_pages_AboutPage_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
+    name: 'about'
   }, {
     path: '/contacts',
-    component: _components_pages_ContactsPage_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
+    component: _components_pages_ContactsPage_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
+    name: 'contacts'
   }, {
-    path: '/*',
+    path: '*',
     component: _components_pages_NotFoundPage_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
   }]
 });

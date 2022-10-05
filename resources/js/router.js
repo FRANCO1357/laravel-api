@@ -15,10 +15,10 @@ Vue.use(VueRouter)
 const routes = new VueRouter({
     mode: 'history',
     routes: [
-        {path: '/', component: HomePage},
-        {path: '/about', component: AboutPage},
-        {path: '/contacts', component: ContactsPage},
-        {path: '/*', component: NotFoundPage},
+        {path: '/', component: HomePage, name: 'home'},
+        {path: '/about', component: AboutPage, name: 'about'},
+        {path: '/contacts', component: ContactsPage, name: 'contacts'},
+        {path: '*', component: NotFoundPage},
     ]
 });
 
