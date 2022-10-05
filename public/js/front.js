@@ -2200,7 +2200,12 @@ var render = function render() {
     staticClass: "card-subtitle mb-2 text-muted"
   }, [_vm._v("Data di pubblicazione: " + _vm._s(_vm.publishedAt))]), _vm._v(" "), _c("p", {
     staticClass: "card-text"
-  }, [_vm._v(_vm._s(_vm.post.content))])])])]);
+  }, [_vm._v(_vm._s(_vm.post.content))])]), _vm._v(" "), _c("div", {
+    staticClass: "card-footer"
+  }, [_c("span", {
+    staticClass: "badge badge-pill",
+    "class": "badge-".concat(_vm.post.category ? _vm.post.category.color : "light")
+  }, [_vm._v(_vm._s(_vm.post.category.label))])])])]);
 };
 
 var staticRenderFns = [];

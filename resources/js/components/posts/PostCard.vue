@@ -6,6 +6,9 @@
         <h6 class="card-subtitle mb-2 text-muted">Data di pubblicazione: {{publishedAt}}</h6>
         <p class="card-text">{{post.content}}</p>
     </div>
+    <div class="card-footer">
+        <span class="badge badge-pill" :class="`badge-${post.category ? post.category.color : 'light'}`">{{post.category.label}}</span>
+    </div>
 </div>
 </div>
 </template>
