@@ -10,7 +10,7 @@
 
 
 @if ($post->exists )
-<form action="{{route('admin.posts.update', $post)}}" method="POST">
+<form action="{{route('admin.posts.update', $post)}}" method="POST" enctype="multipart/form-data">
     @method('PUT')
 @else
 <form action="{{route('admin.posts.store')}}" method="POST">
@@ -63,8 +63,8 @@
         </div>
         <div class="col-11">
             <div class="form-group">
-                <label for="image">Immagine</label>
-                <input type="url" class="form-control" id="image-field" name="image" value="{{old('image', $post->image)}}">
+                <label for="image">Immagine</label><br>
+                <input type="file" id="image-field" name="image">
             </div>
         </div>
         <div class="col-1">

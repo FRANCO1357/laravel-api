@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -55,7 +56,7 @@ class PostController extends Controller
         $request->validate([
             'title' => 'required|string|min:5|max:50|unique:posts',
             'content' => 'required|string',
-            'image' => 'nullable|url',
+            'image' => 'nullable',
             'category_id' => 'nullable|exists:categories,id',
             'tags' => 'nullable|exists:tags,id',
         ],
@@ -65,7 +66,6 @@ class PostController extends Controller
             'title.max' => 'Il titolo deve avere massimo :max caratteri',
             'title.unique' => "Il titolo $request->title esiste già",
             'content.required' => 'Il contenuto è obbligatorio',
-            'image.required' => 'Il link dell\'immagine deve iniziare con http',
             'category_id.exixts' => 'Categoria non esistente',
             'tags.exists' => 'Tag inesistente'
         ]);
@@ -79,6 +79,11 @@ class PostController extends Controller
         $post->slug = Str::slug($post->title, '-');
 
         $post->user_id = Auth::id();
+
+        if(array_key_exists('image', $data)){
+            $image_url = Storage::put('posts', $data['image']);
+            $post->image = $image_url;
+        }
         
         $post->save();
 
