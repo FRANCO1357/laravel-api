@@ -56,7 +56,7 @@ class PostController extends Controller
         $request->validate([
             'title' => 'required|string|min:5|max:50|unique:posts',
             'content' => 'required|string',
-            'image' => 'nullable',
+            'image' => 'nullable|image|mimes:jpeg,jpg,png',
             'category_id' => 'nullable|exists:categories,id',
             'tags' => 'nullable|exists:tags,id',
         ],
@@ -136,7 +136,7 @@ class PostController extends Controller
         $request->validate([
             'title' => ['required', 'string', 'min:5', 'max:50', Rule::unique('posts')->ignore($post->id )],
             'content' => 'required|string',
-            'image' => 'nullable|url',
+            'image' => 'nullable|image|mimes:jpeg,jpg,png',
             'category_id' => 'nullable|exists:categories,id',
             'tags' => 'nullable|exists:tags,id',
         ],
@@ -154,6 +154,12 @@ class PostController extends Controller
         $data = $request->all();
 
         $data['slug'] = Str::slug($request->title, '-');
+
+        if(array_key_exists('image', $data)){
+            if($post->image) Storage::delete($post->image);
+            $image_url = Storage::put('posts', $data['image']);
+            $post->image = $image_url;
+        }
 
         $post->update($data);
 
@@ -174,6 +180,8 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+        if($post->image) Storage::delete($post->image);
+
         $post->delete();
 
         return redirect()->route('admin.posts.index')->with('message', 'Il post è stato eliminato con successo')->with('type', 'danger');

@@ -37378,11 +37378,18 @@ deleteForms.forEach(function (form) {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-var placeholder = "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png";
+var placeholder = "https://media.istockphoto.com/vectors/thumbnail-image-vector-graphic-vector-id1147544807?k=20&m=1147544807&s=612x612&w=0&h=pBhz1dkwsCMq37Udtp9sfxbjaMl27JUapoyYpQm0anc=";
 var imageField = document.getElementById('image-field');
 var preview = document.getElementById('preview');
 imageField.addEventListener('input', function () {
-  if (imageField.value) preview.src = imageField.value;else preview.src = placeholder;
+  if (imageField.files && imageField.files[0]) {
+    var reader = new FileReader();
+    reader.readAsDataURL(imageField.files[0]);
+
+    reader.onload = function (event) {
+      preview.src = event.target.result;
+    };
+  } else preview.src = placeholder;
 });
 
 /***/ }),
