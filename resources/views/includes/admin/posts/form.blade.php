@@ -13,7 +13,7 @@
 <form action="{{route('admin.posts.update', $post)}}" method="POST" enctype="multipart/form-data">
     @method('PUT')
 @else
-<form action="{{route('admin.posts.store')}}" method="POST">
+<form action="{{route('admin.posts.store')}}" method="POST" enctype="multipart/form-data">
 @endif
 
 

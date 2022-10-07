@@ -4,7 +4,7 @@
     <header><h1>{{$post->title }}</h1></header>
     <div class="clearfix">
         @if ($post->image)
-        <img class="float-left mr-2" src="{{$post->image}}" alt="{{$post->slug}}">
+        <img class="float-left mr-2 img-fluid" width="200" src="{{asset('storage/' . $post->image)}}" alt="{{$post->slug}}">
         @endif
         <p><strong>Categoria: </strong>@if($post->category) {{$post->category->label}} @else Nessuna @endif</p>
         <p><strong>Tags: </strong> 
